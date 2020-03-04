@@ -6,7 +6,7 @@ r= int(input("Enter the value of r ="))
 z= int(input("Enter the value of z ="))
 
 x = sym.symbols('x')
-eq1 = sym.Eq(p*x-q*x-z-q,x)
+eq1 = sym.Eq(p*x-q*x-z-q)
 sol = sym.solve(eq1)
 print("The value of x is :",sol)
 
