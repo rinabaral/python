@@ -224,13 +224,209 @@ print(any(c.islower() for c in str1))
 
 """129. Write a Python program to add leading zeroes to a string."""
 
+str1='122.22'
+print("Original String: ",str1)
+str1 = str1.ljust(8, '0')
+print(str1)
+str1 = str1.ljust(10, '0')
+print(str1)
 
 
+"""130. Write a Python program to use double quotes to display strings."""
+import json
+lis = ['Hey', 1,2,4,'there']
+print(json.dumps(lis))
 
 
+"""131. Write a Python program to split a variable length string into variables."""
+var_list = ['a', 'b', 'c']
+x, y, z = (var_list + []*3)[:3]
+print(x, y, z)
+var_list = [100, 20.25]
+x, y = (var_list + [None] * 2)[:2]
+print(x, y)
 
 
+"""132. Write a Python program to list home directory without absolute path. """
+import os.path
+print(os.path.expanduser('~'))
 
+
+"""133. Write a Python program to calculate the time runs (difference between start and current time) of a program."""
+from timeit import default_timer
+def timer(n):
+    start = default_timer()
+    for row in range(0,n):
+        print(row)
+    print(default_timer() - start)
+timer(5)
+timer(15)
+
+
+"""134. Write a Python program to input two integers in a single line."""
+print("Input the value of x & y")
+x, y = map(int, input().split())
+print("The value of x & y are: ",x,y)
+
+
+"""135. Write a Python program to print a variable without spaces between values.
+Sample value : x =30
+Expected output : Value of x is "30" """
+
+x = 30
+print('Value of x is "{}"'.format(x))
+
+
+"""136. Write a Python program to find files and skip directories of a given directory. """
+
+import os
+print([f for f in os.listdir('/') if os.path.isfile(os.path.join('/', f))])
+
+
+"""137. Write a Python program to extract single key-value pair of a dictionary in variables."""
+d= {'a':'apple','b':'ball','c':'cat'}
+c1, c2 = list(d.items())[0]
+print(c1, c2)
+
+
+"""138. Write a Python program to convert true to 1 and false to 0."""
+x = 'true'
+x = int(x == 'true')
+print(x)
+x = 'false'
+x = int(x == 'true')
+print(x)
+
+
+"""139. Write a Python program to valid a IP address."""
+import socket
+addr = input("Enter an IP address:")
+try:
+    socket.inet_aton(addr)
+    print("Valid IP")
+except socket.error:
+    print("Invalid IP")
+
+
+"""140. Write a Python program to convert an integer to binary keep leading zeros.
+Sample data : 50
+Expected output : 00001100, 0000001100 """
+
+x = 12
+print(format(x, '08b'))
+print(format(x, '010b'))
+
+
+"""141. Write a python program to convert decimal to hexadecimal. 
+Sample decimal number: 30, 4
+Expected output: 1e, 04"""
+
+d = int(input("enter a decimal value:"))
+print(format(d, 'x'))
+
+
+"""142. Write a Python program to find the operating system name, platform and
+platform release date. 
+Operating system name:
+posix
+Platform name:
+Linux
+Platform release:
+4.4.0-47-generic """
+
+import os
+import platform
+print("Operating system name:", os.name)
+print("Platform name:",platform.system)
+print("Platform Release:",platform.release)
+
+"""143. Write a Python program to determine if the python shell is executing in 32bit or 64bit mode on operating system."""
+import struct
+print(struct.calcsize("P") * 8)
+
+
+"""144. Write a Python program to check whether variable is of integer or string."""
+a = '123.3x'
+if isinstance(a,int):
+    print ("{} is an integer".format(a))
+elif isinstance(a,str):
+    print ("{} is string".format(a))
+else:
+    print ("{} is neither Integer nor string".format(a))
+
+
+"""145. Write a Python program to test if a variable is a list or tuple or a set."""
+a = (1,2,3,4,5)
+if isinstance(a,list):
+    print ("{} is a list".format(a))
+elif isinstance(a,tuple):
+    print ("{} is a tuple".format(a))
+elif isinstance(a,set):
+    print ("{} is a set".format(a))    
+else:
+    print ("{} is none of the list,tuple or set".format(a))
+
+"""146. Write a Python program to find the location of Python module sources. Go to the editor
+Operating system name:
+posix
+Platform name:
+Linux
+Platform release:
+4.4.0-47-generic """
+
+import sys
+print("\nList of directories in sys module:")
+print(sys.path)
+print("\nList of directories in os module:")
+import os
+print(os.path)
+
+
+"""147. Write a Python function to check whether a number is divisible by another number. Accept two integers values form the user."""
+def divisible(m, n):
+	return True if m % n == 0 else False
+
+print(divisible(20, 5))
+print(divisible(7, 2))
+
+
+"""148. Write a Python function to find the maximum and minimum numbers from a
+sequence of numbers.
+Note: Do not use built-in functions."""
+def max_min(data):
+  l = data[0]
+  s = data[0]
+  for num in data:
+    if num> l:
+      l = num
+    elif num< s:
+        s = num
+  return l, s
+
+print(max_min([0, 10, 15, 40, -5, 42, 17, 28, 75]))
+
+
+"""149. Write a Python function that takes a positive integer and returns the sum of the cube of all the positive integers smaller than the specified number"""
+num = int(input("Enter the integer you want:"))
+s= 0
+for i in range(0,num):
+      s= s+(i**3)
+print(s)
+
+
+"""150. Write a Python function to find a distinct pair of numbers whose product is odd from a sequence of integer values."""
+
+def odd_product(nums):
+  for i in range(len(nums)):
+    for j in range(len(nums)):
+      if  i != j:
+        product = nums[i] * nums[j]
+        if product & 1:
+          return print("The product is :",product)
+dt1 = [2, 4, 6, 8]
+dt2 = [1, 6, 4, 7, 8]
+print(dt1, odd_product(dt1));
+print(dt2, odd_product(dt2));
 
 
 
