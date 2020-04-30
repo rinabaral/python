@@ -154,6 +154,118 @@ if __name__ == '__main__':
     fptr.close()
 
 
+""" Day 10: Binary Numbers """
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input())
+    #converting integer to binary
+    n = bin(n)
+    #getting total number of consecutive 1 in binary number
+    print(max(map(len,n[2:].split('0'))))
+
+
+""" Day 11: 2D Arrays"""
+#calculates the sum of hourglass from the given matrix.
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    arr = []
+    for _ in range(6):
+        arr.append(list(map(int, input().rstrip().split())))
+    
+    total = 0
+    max_total = -1073741824
+
+    for i in range(len(arr)):
+        for j in range(len(arr[i])):
+            #to get the matrix in form or hourglass
+            if (j+2 < 6) and (i+2 < 6):
+                total = arr[i][j] + arr[i][j+1] + arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]                         +arr[i+2][j+1]+arr[i+2][j+2]
+                if max_total < total:
+
+                    max_total = total
+    print(max_total)   
+
+""" Day 12:Inheritance """
+class Person:
+	def __init__(self, firstName, lastName, idNumber):
+		self.firstName = firstName
+		self.lastName = lastName
+		self.idNumber = idNumber
+	def printPerson(self):
+		print("Name:", self.lastName + ",", self.firstName)
+		print("ID:", self.idNumber)
+
+class Student(Person):  #inheriting Person class  
+        def __init__(self, firstName, lastName, idNumber, scores):
+                super().__init__(firstName, lastName, idNumber)
+                self.scores = scores
+
+        def calculate(self):
+             
+
+                avg = sum(self.scores) / len(self.scores)
+
+                if 90 <= avg <= 100:
+                    return 'O'
+                if 80 <= avg < 90:
+                    return 'E'
+                if 70 <= avg < 80:
+                    return 'A'
+                if 55 <= avg < 70:
+                    return 'P'
+                if 40 <= avg < 55:
+                    return 'D'
+                return 'T'
+
+
+line = input().split()
+firstName = line[0]
+lastName = line[1]
+idNum = line[2]
+numScores = int(input()) # not needed for Python
+scores = list( map(int, input().split()) )
+s = Student(firstName, lastName, idNum, scores)
+s.printPerson()
+print("Grade:", s.calculate())
+
+
+"""Day 13: Abstract Classes"""
+
+from abc import ABCMeta, abstractmethod
+class Book(object, metaclass=ABCMeta):
+    def __init__(self,title,author):
+        self.title=title
+        self.author=author   
+    @abstractmethod
+    def display(): pass
+
+#Write MyBook class
+class MyBook(Book):
+    def __init__(self,title,author,price):
+        super().__init__(title,author)
+        self.price = price  
+    def display(self):
+        print("Title:",title, "\n" "Author:",author,"\n" "Price:",price )
+title=input()
+author=input()
+price=int(input())
+new_novel=MyBook(title,author,price)
+new_novel.display()
 
 
 
